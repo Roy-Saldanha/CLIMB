@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CLIMB Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #222; color: #fff; }
+        .video-container { margin: 20px auto; display: inline-block; border: 2px solid #555; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>CLIMB Operator Dashboard</h1>
+
+    <div class="video-container">
+        <!-- Pulls the video stream from web_video_server. Change IP if needed -->
+        <img src="http://192.168.64.2:8080/stream?topic=/camera/image_raw" width="640" height="480">
+    </div>
+
+    <div>
+        <button onclick="toggleFeature('odom')">Toggle Odom Overlay</button>
+        <button onclick="toggleFeature('ut')">Toggle UT Overlay</button>
+    </div>
+
+    <script>
+        function toggleFeature(featureName) {
+            fetch('/toggle', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ feature: featureName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Updated Overlay States:", data);
+            });
+        }
+    </script>
+</body>
+</html>
