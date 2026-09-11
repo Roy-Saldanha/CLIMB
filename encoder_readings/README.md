@@ -25,7 +25,7 @@ Before uploading the sketch, configure your IDE with the following settings:
 ---
 
 ##  Hardware Wiring Diagram
-Find the attached wiring schematic in ![Cytron URC10 Wiring Diagram](cytron_urc10_driver_connections.png).
+Find the attached wiring schematic below. ![Cytron URC10 Wiring Diagram](cytron_urc10_driver_connections.png)
 
 ## Firmware Code
 Can be found in [`encoder_readings.ino`](encoder_readings.ino).
